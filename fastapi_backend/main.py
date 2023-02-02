@@ -18,8 +18,11 @@ with open("lightGBM_definitif.pkl", "rb") as f:
     lightGBM_definitif = pickle.load(f)
 with open('explainer.pkl', 'rb') as explainer:
     explain = pickle.load(explainer)
+with open('logistic_regression.pkl', 'rb') as lr:
+    logistic_regression = pickle.load(lr)
 features = pd.read_csv('features.csv')
 expected_value = pd.read_csv('expected_value.csv')
+features_kept = pd.read_csv('features_kept.csv')
 
 class WaterfallData():
     def __init__ (self, shap_test, col, expected_value, data):
@@ -66,7 +69,12 @@ async def make_predictions(data: Request):
     
     
 
-
-
-
-
+@app.post("/estimation")
+async def make_predictions(data: Request):
+    json_data = await data.json()
+    
+    customer_data = pd.DataFrame(columns=features_kept['features'], data=[list(json_data[0]['inputs'][0].values())])
+    estim = logistic_regression.predict_proba(customer_data)[0][1]
+    return {'estimation': [estim]}
+    
+    
