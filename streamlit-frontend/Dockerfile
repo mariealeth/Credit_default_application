@@ -12,8 +12,6 @@ COPY . /app
 
 EXPOSE 8501
 
+CMD ["streamlit", "run", "Streamlit_dashboard.py"]
 
-ENTRYPOINT ["streamlit", "run"]
-
-CMD ["Streamlit_dashboard.py"]
 

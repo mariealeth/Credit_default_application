@@ -17,9 +17,9 @@ from plotly.colors import n_colors
 import shap
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-url1 = "http://fastapi_backend:80/prediction/"
-url2 = "http://fastapi_backend:80/importance/"
-url3 = "http://fastapi_backend:80/estimation/"
+url1 = "http://fastapi-backend:80/prediction/"
+url2 = "http://fastapi-backend:80/importance/"
+url3 = "http://fastapi-backend:80/estimation/"
 
 
 def request_prediction(url, data):
