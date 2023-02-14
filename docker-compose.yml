@@ -1,0 +1,25 @@
+
+version: '3'
+
+services:
+  fastapi-backend:
+    build: fastapi-backend/
+    restart: always
+    ports:
+      - 80:80  
+    container_name: fastapi-backend
+    
+
+
+  streamlit-frontend:
+    build: streamlit-frontend/
+    restart: always
+    depends_on:
+      - fastapi-backend   
+    ports:
+      - 8501:8501
+    container_name: streamlit-frontend
+    
+
+
+
