@@ -6,7 +6,9 @@ services:
     build: fastapi-backend/
     restart: always
     ports:
-      - 80:80  
+      - 80:80
+    networks:
+      - deploy_network  
     container_name: fastapi-backend
     
 
@@ -18,7 +20,14 @@ services:
       - fastapi-backend   
     ports:
       - 8501:8501
+    networks:
+      - deploy_network
     container_name: streamlit-frontend
+
+
+networks:
+  deploy_network:
+    driver: bridge
     
 
 
