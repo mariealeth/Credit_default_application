@@ -149,7 +149,7 @@ def main():
     
     some_customers = pd.read_csv("some_customers.csv")
     data_20 = pd.read_csv('data_20.csv')
-    some_customers_with_nan = pd.read_csv('some_customers_with_nan.csv')
+    some_customers2 = pd.read_csv('some_customers2.csv')
     
     st.title("Credit Default Risk Analysis")
     row0_spacer1, row0_1, row0_spacer2= st.columns((.1, 8, .1))
@@ -231,10 +231,10 @@ def main():
                         if features_choice!='choose a feature':
                             st.header(features_choice)
                             st.markdown(f"{features_20_df[features_20_df['feature']==features_choice]['definitions'].values[0]}")
-                            if some_customers_with_nan[some_customers_with_nan['SK_ID_CURR']==identity][features_choice].values[0]==np.NaN:
+                            if some_customers2[some_customers2['SK_ID_CURR']==identity][features_choice].values[0]==np.NaN:
                                 st.markdown("Data is not available for this customer")
                             else:
-                                value_custom = some_customers_with_nan[some_customers_with_nan['SK_ID_CURR']==identity][features_choice].values[0]
+                                value_custom = some_customers2[some_customers2['SK_ID_CURR']==identity][features_choice].values[0]
                                 plot_feature(data_20, features_choice, 20, value_custom)
                                 st.markdown(f"Distribution of customers for {features_choice}, based on their default status (red customers 1 defaulted, blue customers 0 did not defaulted)")
                             
@@ -254,13 +254,13 @@ def main():
                     st.header('')
                     st.header('')
                     
-                    if some_customers_with_nan[some_customers_with_nan['SK_ID_CURR']==identity]['DAYS_BIRTH'].values[0]==np.NaN:
+                    if some_customers2[some_customers2['SK_ID_CURR']==identity]['DAYS_BIRTH'].values[0]==np.NaN:
                         st.markdown("Data is not available for this customer")
                     else:
-                        age_custom = int(some_customers_with_nan[some_customers_with_nan['SK_ID_CURR']==identity]['DAYS_BIRTH'].values[0]*(-1)/365)
+                        age_custom = int(some_customers2[some_customers2['SK_ID_CURR']==identity]['DAYS_BIRTH'].values[0]*(-1)/365)
                         st.subheader(f"{age_custom} year's old")
                         st.markdown('Age at the time of application')
-                    if some_customers_with_nan[some_customers_with_nan['SK_ID_CURR']==identity]['CODE_GENDER'].values[0]==np.NaN: 
+                    if some_customers2[some_customers2['SK_ID_CURR']==identity]['CODE_GENDER'].values[0]==np.NaN: 
                         st.markdown("Data is not available for this customer")
                     else:
                         Gender_custom = some_customers[some_customers['SK_ID_CURR']==identity]['CODE_GENDER'].values[0]
@@ -268,7 +268,7 @@ def main():
                             st.subheader(f"Gender : man")
                         if Gender_custom==0:
                             st.subheader(f"Gender: woman")
-                    if some_customers_with_nan[some_customers_with_nan['SK_ID_CURR']==identity]['DAYS_EMPLOYED'].values[0]==np.NaN: 
+                    if some_customers2[some_customers2['SK_ID_CURR']==identity]['DAYS_EMPLOYED'].values[0]==np.NaN: 
                         st.markdown("Data is not available for this customer")
                     else:
                         employment_custom = int(round(some_customers[some_customers['SK_ID_CURR']==identity]['DAYS_EMPLOYED'].values[0]/(-30), 0))
@@ -281,7 +281,7 @@ def main():
                     fig, ax = plt.subplots(1, 3, figsize=(12, 6))
                     
                     data_20_EXT_SOURCE_1 = data_20[data_20["EXT_SOURCE_1"].notna()]
-                    EXT_SOURCE_1_custom = some_customers_with_nan[some_customers_with_nan['SK_ID_CURR']==identity]['EXT_SOURCE_1'].values[0]
+                    EXT_SOURCE_1_custom = some_customers2[some_customers2['SK_ID_CURR']==identity]['EXT_SOURCE_1'].values[0]
                     sns.violinplot(ax=ax[0], y=data_20_EXT_SOURCE_1["EXT_SOURCE_1"], color='#86b2a0')
                     ax[0].set_xlabel('EXT_SOURCE_1', weight='bold')
                     ax[0].set_ylabel('')
@@ -295,7 +295,7 @@ def main():
                         
                         
                     data_20_EXT_SOURCE_2 = data_20[data_20["EXT_SOURCE_2"].notna()]
-                    EXT_SOURCE_2_custom = some_customers_with_nan[some_customers_with_nan['SK_ID_CURR']==identity]['EXT_SOURCE_2'].values[0]
+                    EXT_SOURCE_2_custom = some_customers2[some_customers2['SK_ID_CURR']==identity]['EXT_SOURCE_2'].values[0]
                     sns.violinplot(ax=ax[1], y=data_20_EXT_SOURCE_2["EXT_SOURCE_2"], color='#86b2a0')
                     ax[1].set_xlabel('EXT_SOURCE_2', weight='bold')
                     ax[1].set_ylabel('')
@@ -308,7 +308,7 @@ def main():
                         ax[1].text(x=-0.2, y=EXT_SOURCE_2_custom*1.02, s=f"S 2 ={round(EXT_SOURCE_2_custom, 4)}", weight='bold', color='#9b1408', fontsize=16)
                         
                     data_20_EXT_SOURCE_3 = data_20[data_20["EXT_SOURCE_3"].notna()]
-                    EXT_SOURCE_3_custom = some_customers_with_nan[some_customers_with_nan['SK_ID_CURR']==identity]['EXT_SOURCE_3'].values[0]
+                    EXT_SOURCE_3_custom = some_customers2[some_customers2['SK_ID_CURR']==identity]['EXT_SOURCE_3'].values[0]
                     sns.violinplot(ax=ax[2], y=data_20_EXT_SOURCE_3["EXT_SOURCE_3"], color='#86b2a0')
                     ax[2].set_xlabel('EXT_SOURCE_3', weight='bold')
                     ax[2].set_ylabel('')
@@ -326,10 +326,10 @@ def main():
                 st.markdown('')
                 st.markdown('')
                 
-                PAYMENT_RATE_custom = some_customers_with_nan[some_customers_with_nan['SK_ID_CURR']==identity]['PAYMENT_RATE'].values[0]
-                PREV_APP_CREDIT_PERC_MIN_custom = some_customers_with_nan[some_customers_with_nan['SK_ID_CURR']==identity]['PREV_APP_CREDIT_PERC_MIN'].values[0]
-                LOAN_custom =  some_customers_with_nan[some_customers_with_nan['SK_ID_CURR']==identity]['AMT_CREDIT'].values[0]
-                ANNUITY_custom = some_customers_with_nan[some_customers_with_nan['SK_ID_CURR']==identity]['AMT_ANNUITY'].values[0]
+                PAYMENT_RATE_custom = some_customers2[some_customers2['SK_ID_CURR']==identity]['PAYMENT_RATE'].values[0]
+                PREV_APP_CREDIT_PERC_MIN_custom = some_customers2[some_customers2['SK_ID_CURR']==identity]['PREV_APP_CREDIT_PERC_MIN'].values[0]
+                LOAN_custom =  some_customers2[some_customers2['SK_ID_CURR']==identity]['AMT_CREDIT'].values[0]
+                ANNUITY_custom = some_customers2[some_customers2['SK_ID_CURR']==identity]['AMT_ANNUITY'].values[0]
                 PAYMENT_RATE_mean = data_20['PAYMENT_RATE'].mean()
                 PREV_APP_CREDIT_PERC_MIN_mean = data_20['PREV_APP_CREDIT_PERC_MIN'].mean()
                 LOAN_mean = data_20['AMT_CREDIT'].mean()

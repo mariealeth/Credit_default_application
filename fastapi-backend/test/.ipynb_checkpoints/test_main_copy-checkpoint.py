@@ -100,8 +100,6 @@ class TestApplicationTrainTest(unittest.TestCase):
         self.assertAlmostEqual(df['INCOME_PER_PERSON'][0], 50000)  
         self.assertAlmostEqual(df['ANNUITY_INCOME_PERC'][0], 0.25)  
         self.assertAlmostEqual(df['PAYMENT_RATE'][0], 0.05)  
-        
-        
 
 
         

@@ -1,21 +1,21 @@
-,feature
-255,PAYMENT_RATE
-31,EXT_SOURCE_1
-32,EXT_SOURCE_2
-33,EXT_SOURCE_3
-10,DAYS_BIRTH
-7,AMT_ANNUITY
-589,APPROVED_CNT_PAYMENT_MEAN
-641,INSTAL_DPD_MEAN
-11,DAYS_EMPLOYED
-660,INSTAL_AMT_PAYMENT_SUM
-400,PREV_CNT_PAYMENT_MEAN
-8,AMT_GOODS_PRICE
-13,DAYS_ID_PUBLISH
-319,ACTIVE_DAYS_CREDIT_MAX
-6,AMT_CREDIT
-1,CODE_GENDER
-732,CC_CNT_DRAWINGS_ATM_CURRENT_MEAN
-651,INSTAL_PAYMENT_DIFF_MEAN
-623,POS_MONTHS_BALANCE_SIZE
-381,PREV_APP_CREDIT_PERC_MIN
+,Unnamed: 0,feature,definitions
+0,255,PAYMENT_RATE,Ratio of loan annuity by credit amount of the loan
+1,31,EXT_SOURCE_1,Normalized score from external data source 1
+2,32,EXT_SOURCE_2,Normalized score from external data source 2
+3,33,EXT_SOURCE_3,Normalized score from external data source 3
+4,10,DAYS_BIRTH,Client's age in days at the time of application
+5,7,AMT_ANNUITY,loan annuity
+6,589,APPROVED_CNT_PAYMENT_MEAN,Term of previous credit at application of the previous approved application
+7,641,INSTAL_DPD_MEAN,Difference between when was the installements of previous credit paid actually and when it was actually paid
+8,11,DAYS_EMPLOYED,How many days before the application the client started current employment
+9,660,INSTAL_AMT_PAYMENT_SUM,what the client actulally paid on previous credit on this installment
+10,400,PREV_CNT_PAYMENT_MEAN,Term of previous credit at application of the previous application
+11,8,AMT_GOODS_PRICE,Price of the goods for which the loan is given
+12,13,DAYS_ID_PUBLISH,How many days before the application did the client change the identity document with which he applied for the loan
+13,319,ACTIVE_DAYS_CREDIT_MAX,How many days before current application did the client apply for a credit bureau credit still active
+14,6,AMT_CREDIT,Credit amount of the loan
+15,1,CODE_GENDER,Gender of the client
+16,732,CC_CNT_DRAWINGS_ATM_CURRENT_MEAN,Average number of drawings at ATM during a month on the previous application
+17,651,INSTAL_PAYMENT_DIFF_MEAN,Difference between what was the prescribed installment amount of the previous credit on this installment and the amount the client actually paid
+18,623,POS_MONTHS_BALANCE_SIZE,Month of balance relative to application date
+19,381,PREV_APP_CREDIT_PERC_MIN,Ratio of how much credit did client ask on the previous application by the amount of the loan
